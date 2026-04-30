@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions – Doto Kids Birthday Sale 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple-deep:  #1E0E6A;
+      --purple-mid:   #2D1A9C;
+      --purple-light: #4A2EC0;
+      --gold:         #F5C30A;
+      --pink:         #E8197E;
+      --pink-light:   #FF5BAE;
+      --pink-bg:      #FFF0F5;
+      --pink-border:  #F4C0D1;
+      --pink-text:    #993356;
+      --pink-accent:  #D4537E;
+      --white:        #FFFFFF;
+      --bg:           #F4F0FF;
+      --text:         #1E0E6A;
+      --text-muted:   #6B6B9A;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── TICKER ──────────────────────────────────────────────────── */
+    .ticker-bar {
+      background: var(--purple-deep);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 10;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      padding-left: 100%;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track span  { margin-right: 60px; }
+    .ticker-track .dot  { color: var(--gold); margin-right: 60px; font-size: 1rem; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── NAV BAR ────────────────────────────────────────────────── */
+    .nav-bar {
+      background: var(--white);
+      border-bottom: 1px solid #EEE;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 9;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-logo img { height: 44px; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-right a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--purple-mid);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--pink); }
+    .nav-btn {
+      background: var(--purple-mid);
+      color: var(--white) !important;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem !important;
+      transition: background 0.2s !important;
+    }
+    .nav-btn:hover { background: var(--pink) !important; color: var(--white) !important; }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #1A0B5E 0%, var(--purple-mid) 55%, #3D1F96 100%);
+      padding: 52px 20px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(245,195,10,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(232,25,126,0.08) 0%, transparent 50%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.1;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      margin-bottom: 14px;
+    }
+    .hero h1 span { color: var(--pink-light); }
+
+    .hero-meta {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero-meta .sep { margin: 0 10px; opacity: 0.4; }
+
+    /* tag row */
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .tag.gold   { background: rgba(245,195,10,0.15);  border-color: rgba(245,195,10,0.4);  color: var(--gold); }
+    .tag.pink   { background: rgba(232,25,126,0.15);  border-color: rgba(232,25,126,0.4);  color: var(--pink-light); }
+    .tag.white  { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: var(--white); }
+
+    /* ─── CONTENT AREA ───────────────────────────────────────────── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    /* ─── SECTION BLOCK ──────────────────────────────────────────── */
+    .tnc-section { margin-bottom: 40px; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 16px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, #DDD6FE, transparent);
+      border-radius: 2px;
+    }
+
+    /* ─── CLAUSE ─────────────────────────────────────────────────── */
+    .clause {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .clause-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--pink-accent);
+      line-height: 1.5;
+      flex-shrink: 0;
+      width: 24px;
+      text-align: right;
+    }
+    .clause-text {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.72;
+      font-weight: 400;
+    }
+    .clause-text strong { font-weight: 700; color: var(--purple-deep); }
+    .clause-text a {
+      color: var(--pink-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .clause-text a:hover { text-decoration: underline; }
+
+    /* ─── HIGHLIGHT BOX ──────────────────────────────────────────── */
+    .highlight-box {
+      background: var(--pink-bg);
+      border: 1px solid var(--pink-border);
+      border-left: 4px solid var(--pink-accent);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin: 28px 0;
+    }
+    .highlight-box .hb-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pink-accent);
+      margin-bottom: 8px;
+    }
+    .highlight-box p {
+      font-size: 0.88rem;
+      color: var(--pink-text);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .highlight-box p strong { font-weight: 700; color: var(--pink-text); }
+
+    /* ─── DIVIDER ────────────────────────────────────────────────── */
+    .divider {
+      border: none;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, #DDD6FE 30%, #DDD6FE 70%, transparent);
+      margin: 32px 0;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    .tnc-footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1.5px dashed #DDD6FE;
+    }
+    .tnc-footer p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 1.7;
+    }
+    .tnc-footer a { color: var(--pink-accent); text-decoration: none; font-weight: 700; }
+    .tnc-footer a:hover { text-decoration: underline; }
+
+    /* ─── BACK LINK ──────────────────────────────────────────────── */
+    .back-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .back-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--purple-light);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-bar a:hover { color: var(--pink); }
+
+    /* ─── PAGE FOOTER ────────────────────────────────────────────── */
+    footer {
+      background: var(--purple-deep);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 22px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- ─── TICKER ─────────────────────────────────────────────────────────────── -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span>🎂 2nd DOTOKIDS Birthday Sale is Live!</span>
+    <span class="dot">✦</span>
+    <span>Everything is under ₹799</span>
+    <span class="dot">✦</span>
+    <span>Get Upto 40% Off</span>
+    <span class="dot">✦</span>
+    <span>🎂 2nd DOTOKIDS Birthday Sale is Live!</span>
+    <span class="dot">✦</span>
+    <span>Everything is under ₹799</span>
+    <span class="dot">✦</span>
+    <span>Get Upto 40% Off</span>
+    <span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ─── NAV ───────────────────────────────────────────────────────────────── -->
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://www.dotokids.com/" target="_blank" aria-label="Doto Kids">
+    <img
+      src="https://www.dotokids.com/cdn/shop/files/Doto_Kids_Logo_Color_165x.png?v=1759925160"
+      alt="Doto Kids"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:Fredoka One,cursive;font-size:1.4rem;color:#1E0E6A;\'>Doto Kids</span>'"
+    />
+  </a>
+  <div class="nav-right">
+    <a href="/">🏆 Leaderboard</a>
+    <a href="https://www.dotokids.com/" target="_blank" class="nav-btn">🛒 Shop Now</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-badge">Birthday Sale 2025</div>
+  <h1>Terms &amp; <span>Conditions</span></h1>
+  <p class="hero-meta">
+    1 May – 10 May
+    <span class="sep">·</span>
+    dotokids.com
+    <span class="sep">·</span>
+    Top 10 Spenders Leaderboard
+  </p>
+  <div class="tag-row">
+    <span class="tag white">Sale period: 1–10 May</span>
+    <span class="tag gold">Cashback: 100%</span>
+    <span class="tag white">Announcement: post 24 May</span>
+    <span class="tag pink">Payout: 30 May</span>
+  </div>
+</header>
+
+<!-- ─── CONTENT ───────────────────────────────────────────────────────────── -->
+<main class="content">
+
+  <div class="back-bar">
+    <a href="/">← Back to Leaderboard</a>
+  </div>
+
+  <!-- Eligibility -->
+  <div class="tnc-section">
+    <div class="section-label">Eligibility &amp; Participation</div>
+
+    <div class="clause">
+      <span class="clause-num">1</span>
+      <p class="clause-text">The Dotokids Birthday Sale runs from <strong>1 May 2025 to 10 May 2025 (inclusive)</strong> on <a href="https://www.dotokids.com" target="_blank">www.dotokids.com</a>.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">2</span>
+      <p class="clause-text">The promotion is open to all customers who place at least one order on dotokids.com during the sale period. Participation is automatic upon purchase — no separate registration is required.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">3</span>
+      <p class="clause-text">Dotokids reserves the right to disqualify any participant found to be engaging in fraudulent, manipulative, or bad-faith purchasing activity.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Leaderboard -->
+  <div class="tnc-section">
+    <div class="section-label">Leaderboard &amp; Spending Calculation</div>
+
+    <div class="clause">
+      <span class="clause-num">4</span>
+      <p class="clause-text">A <strong>Top 10 Spenders Leaderboard</strong> will track cumulative spending across all orders placed between 1 May and 10 May 2025.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">5</span>
+      <p class="clause-text">Spending is <strong>cumulative</strong> — multiple orders placed by the same customer during the sale period will be combined to determine their total spend.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">6</span>
+      <p class="clause-text">Only <strong>non-refunded orders</strong> count towards the leaderboard total. Any order (or item within an order) that is returned and refunded will be deducted from the customer's cumulative spend.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">7</span>
+      <p class="clause-text">Partial refunds will result in a proportional deduction from the customer's total. Only the net, retained spend is considered.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">8</span>
+      <p class="clause-text">Dotokids' calculation of each customer's total eligible spend is <strong>final and binding</strong>.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Prize -->
+  <div class="tnc-section">
+    <div class="section-label">Prize &amp; Cashback</div>
+
+    <div class="clause">
+      <span class="clause-num">9</span>
+      <p class="clause-text">The <strong>top 10 customers with the highest cumulative eligible spend</strong> at the end of the sale period will be declared winners and will each receive a <strong>100% cashback</strong> of their total eligible spend.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">10</span>
+      <p class="clause-text">In the event of a tie for the 10th position, the customer who reached the tied amount first (by order timestamp) will be awarded the final qualifying spot.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">11</span>
+      <p class="clause-text">Winners will be announced <strong>after the 14-day return window has closed</strong> (i.e., after 24 May 2025), once final eligible spend figures are confirmed.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">12</span>
+      <p class="clause-text">The <strong>100% cashback prize will be issued on 30 May 2025</strong>, in the form of store credit or as otherwise communicated by Dotokids at the time of announcement.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">13</span>
+      <p class="clause-text">The cashback is non-transferable, has no cash equivalent, and is valid only for use on www.dotokids.com.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hb-label">⚠ Important Note</div>
+    <p><strong>The winner announcement and cashback payout are contingent on the completion of the 14-day return period.</strong> Any returns made within this window may affect final leaderboard standings. Dotokids is not liable for delays caused by return disputes or incomplete order information.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- General -->
+  <div class="tnc-section">
+    <div class="section-label">General</div>
+
+    <div class="clause">
+      <span class="clause-num">14</span>
+      <p class="clause-text">Dotokids reserves the right to amend, suspend, or cancel this promotion at any time, with prior notice where reasonably possible.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">15</span>
+      <p class="clause-text">By participating, customers agree to these Terms &amp; Conditions and to Dotokids' standard <a href="https://www.dotokids.com" target="_blank">Privacy Policy</a>.</p>
+    </div>
+    <div class="clause">
+      <span class="clause-num">16</span>
+      <p class="clause-text">These terms are governed by applicable Indian law. Any disputes shall be subject to the jurisdiction of courts in the relevant city.</p>
+    </div>
+  </div>
+
+  <!-- Footer note -->
+  <div class="tnc-footer">
+    <p>
+      Questions? Reach us at <a href="https://www.dotokids.com" target="_blank">www.dotokids.com</a><br/>
+      Dotokids Birthday Sale 2025
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    &copy; 2025 Doto Kids &nbsp;·&nbsp;
+    <a href="https://www.dotokids.com/" target="_blank">dotokids.com</a>
+    &nbsp;·&nbsp;
+    <a href="/">Leaderboard</a>
+  </p>
+</footer>
+
+</body>
+</html>
