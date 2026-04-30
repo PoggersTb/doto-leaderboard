@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doto Kids – 2nd Birthday Sale Leaderboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple-deep:  #1E0E6A;
+      --purple-mid:   #2D1A9C;
+      --purple-light: #4A2EC0;
+      --gold:         #F5C30A;
+      --gold-dark:    #C89D00;
+      --pink:         #E8197E;
+      --pink-light:   #FF5BAE;
+      --white:        #FFFFFF;
+      --bg:           #F4F0FF;
+      --tick-bg:      #1E0E6A;
+      --tick-fg:      #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── CONFETTI ──────────────────────────────────────────────── */
+    #confetti-canvas {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── 1. TICKER BAR ─────────────────────────────────────────── */
+    .ticker-bar {
+      background: var(--tick-bg);
+      color: var(--tick-fg);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 10;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      padding-left: 100%;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track span { margin-right: 60px; }
+    .ticker-track .dot {
+      color: var(--gold);
+      margin-right: 60px;
+      font-size: 1rem;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── 2. LOGO NAV BAR ───────────────────────────────────────── */
+    .nav-bar {
+      background: var(--white);
+      border-bottom: 1px solid #EEE;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 9;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-logo img {
+      height: 44px;
+      display: block;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-right a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--purple-mid);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--pink); }
+    .nav-cart {
+      background: var(--purple-mid);
+      color: var(--white) !important;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem !important;
+    }
+    .nav-cart:hover { background: var(--pink); color: var(--white) !important; }
+
+    /* ─── 3. HERO ───────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #1A0B5E 0%, var(--purple-mid) 55%, #3D1F96 100%);
+      padding: 52px 20px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(245,195,10,0.07) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(232,25,126,0.07) 0%, transparent 50%);
+    }
+
+    /* floating dots */
+    .hero-dots span {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+      background: var(--white);
+      animation: drift 6s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: translateY(0) scale(1); }
+      to   { transform: translateY(-20px) scale(1.1); }
+    }
+
+    .badge-wrap {
+      display: inline-block;
+      animation: float 3.2s ease-in-out infinite;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 6px 24px rgba(245,195,10,0.5));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      color: var(--white);
+      line-height: 1.1;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    }
+    .hero h1 .g { color: var(--gold); }
+    .hero h1 .p { color: var(--pink-light); }
+
+    .hero-sub {
+      margin-top: 12px;
+      color: rgba(255,255,255,0.78);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 700;
+    }
+
+    .cashback-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 26px;
+      background: var(--pink);
+      color: var(--white);
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      padding: 13px 34px;
+      border-radius: 50px;
+      box-shadow: 0 6px 28px rgba(232,25,126,0.55);
+      animation: pulse-pill 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse-pill {
+      0%, 100% { box-shadow: 0 6px 28px rgba(232,25,126,0.55); transform: scale(1); }
+      50%       { box-shadow: 0 12px 40px rgba(232,25,126,0.75); transform: scale(1.04); }
+    }
+
+    /* ─── 4. LEADERBOARD SECTION ────────────────────────────────── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-head h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      color: var(--purple-deep);
+      line-height: 1.2;
+    }
+    .section-head h2 span { color: var(--pink); }
+    .section-head p {
+      margin-top: 8px;
+      color: #666;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    /* ── TOP-10 WINNER GRID ──────────────────────────────────────── */
+    .winners-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 900px) { .winners-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .winners-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .winner-card {
+      background: linear-gradient(145deg, #FFFBEF, #FFF8F0);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 22px 14px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 18px rgba(245,195,10,0.18);
+      transition: transform 0.25s, box-shadow 0.25s;
+      overflow: hidden;
+    }
+    .winner-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,195,10,0.12), transparent);
+    }
+    .winner-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(245,195,10,0.35);
+    }
+
+    .wc-rank {
+      position: absolute;
+      top: 10px; left: 12px;
+      width: 26px; height: 26px;
+      background: var(--purple-mid);
+      color: var(--white);
+      border-radius: 50%;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.78rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .wc-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+
+    .wc-name {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--purple-deep);
+      word-break: break-word;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .wc-phone {
+      font-size: 0.72rem;
+      color: #999;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .wc-amount {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: var(--purple-mid);
+      margin-bottom: 10px;
+    }
+    .wc-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── OTHERS LIST ─────────────────────────────────────────────── */
+    .others-head {
+      text-align: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: var(--purple-deep);
+      margin-bottom: 20px;
+    }
+    .others-head span { color: #999; font-size: 1rem; }
+
+    .others-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .other-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: 0 3px 14px rgba(45,26,156,0.07);
+      transition: transform 0.18s;
+    }
+    .other-row:hover { transform: translateX(4px); }
+
+    .other-rank {
+      min-width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--purple-light);
+      color: var(--white);
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.88rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .other-info { flex: 1; min-width: 0; }
+    .other-name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--purple-deep);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .other-phone { font-size: 0.72rem; color: #bbb; font-weight: 700; }
+    .other-amount { font-size: 0.95rem; font-weight: 900; color: #aaa; white-space: nowrap; }
+
+    /* ── EMPTY / LOADING ─────────────────────────────────────────── */
+    .state-box {
+      text-align: center;
+      padding: 56px 20px;
+    }
+    .state-box .icon { font-size: 3.5rem; }
+    .state-box p { margin-top: 12px; font-size: 1rem; font-weight: 700; color: #888; }
+    .spinner {
+      width: 52px; height: 52px;
+      border: 5px solid rgba(45,26,156,0.12);
+      border-top-color: var(--purple-mid);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── LAST UPDATED ────────────────────────────────────────────── */
+    .meta-bar {
+      text-align: center;
+      color: #bbb;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    .meta-bar button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--purple-light);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-left: 10px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .meta-bar button:hover { color: var(--pink); }
+
+    /* ── DIVIDER ─────────────────────────────────────────────────── */
+    .divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #DDD6FE, transparent);
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--purple-deep);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ─── 1. TICKER ──────────────────────────────────────────────────────────── -->
+<div class="ticker-bar" aria-label="Offers">
+  <!-- doubled so the loop is seamless -->
+  <div class="ticker-track">
+    <span>🎂 2nd DOTOKIDS Birthday Sale is Live!</span>
+    <span class="dot">✦</span>
+    <span>Everything is under ₹799</span>
+    <span class="dot">✦</span>
+    <span>Get Upto 40% Off</span>
+    <span class="dot">✦</span>
+    <!-- repeat for seamless loop -->
+    <span>🎂 2nd DOTOKIDS Birthday Sale is Live!</span>
+    <span class="dot">✦</span>
+    <span>Everything is under ₹799</span>
+    <span class="dot">✦</span>
+    <span>Get Upto 40% Off</span>
+    <span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ─── 2. LOGO NAV BAR ────────────────────────────────────────────────────── -->
+<nav class="nav-bar">
+  <a class="nav-logo" href="https://www.dotokids.com/" target="_blank" aria-label="Doto Kids">
+    <img
+      src="https://www.dotokids.com/cdn/shop/files/Doto_Kids_Logo_Color_165x.png?v=1759925160"
+      alt="Doto Kids"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:Fredoka One,cursive;font-size:1.4rem;color:#1E0E6A;\'>Doto Kids</span>'"
+    />
+  </a>
+  <div class="nav-right">
+    <a href="https://www.dotokids.com/" target="_blank" class="nav-cart">🛒 Shop Now</a>
+  </div>
+</nav>
+
+<!-- ─── 3. HERO ────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-dots">
+    <span style="width:180px;height:180px;top:-40px;left:-50px;animation-delay:0s;"></span>
+    <span style="width:120px;height:120px;bottom:-20px;right:-30px;animation-delay:1.5s;"></span>
+    <span style="width:70px;height:70px;top:30%;left:5%;animation-delay:0.8s;"></span>
+    <span style="width:50px;height:50px;top:20%;right:8%;animation-delay:2s;"></span>
+  </div>
+
+  <!-- Birthday Sale Creative -->
+  <div class="badge-wrap">
+    <img
+      src="/birthday-sale.png"
+      alt="2nd Birthday Sale – Upto 40% Off"
+      style="height:200px;width:auto;"
+    />
+  </div>
+
+  <h1>
+    <span class="g">Top Shoppers</span><br/>
+    <span class="p">Leaderboard</span>
+  </h1>
+  <p class="hero-sub">Who's winning the birthday shopping race? 🛍️</p>
+
+  <div class="cashback-pill">
+    🎁&nbsp; Top 10 Win 100% Money Back! &nbsp;🎁
+  </div>
+</header>
+
+<!-- ─── 4. LEADERBOARD ─────────────────────────────────────────────────────── -->
+<main class="section">
+
+  <div class="section-head">
+    <h2>🏆 The 100% Cashback <span>Winners</span></h2>
+    <p>Top 10 shoppers by total spend — all winners, all equal!</p>
+  </div>
+
+  <p class="meta-bar" id="meta-bar">
+    Loading…
+    <button onclick="refresh()" title="Refresh from sheet">↻ Refresh</button>
+  </p>
+
+  <!-- winners grid injected here -->
+  <div id="winners-section">
+    <div class="state-box">
+      <div class="spinner"></div>
+      <p>Fetching live data…</p>
+    </div>
+  </div>
+
+  <hr class="divider" id="divider" style="display:none;" />
+
+  <!-- others list injected here -->
+  <div id="others-section"></div>
+
+</main>
+
+<footer>
+  <p>
+    &copy; 2024 Doto Kids &nbsp;·&nbsp;
+    <a href="https://www.dotokids.com/" target="_blank">dotokids.com</a>
+    &nbsp;·&nbsp;
+    <a href="/admin" target="_blank">Admin</a>
+    &nbsp;·&nbsp; Leaderboard refreshes every 30 s
+  </p>
+</footer>
+
+<script>
+/* ── Confetti ─────────────────────────────────────────────────────────────── */
+(function () {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx    = canvas.getContext('2d');
+  const colors = ['#F5C30A','#E8197E','#2D1A9C','#FF5BAE','#FFF','#A855F7','#34D399'];
+  let   pieces = [];
+
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize(); addEventListener('resize', resize);
+
+  for (let i = 0; i < 110; i++) pieces.push({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight - innerHeight,
+    w: Math.random() * 10 + 4,
+    h: Math.random() * 5 + 2,
+    color: colors[i % colors.length],
+    rot: Math.random() * 360,
+    speed: Math.random() * 1.8 + 0.6,
+    spin:  (Math.random() - 0.5) * 3.5,
+    drift: (Math.random() - 0.5) * 1.2,
+    op:    Math.random() * 0.5 + 0.25
+  });
+
+  (function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.globalAlpha = p.op;
+      ctx.fillStyle   = p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+      p.y += p.speed; p.x += p.drift; p.rot += p.spin;
+      if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ── Helpers ──────────────────────────────────────────────────────────────── */
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmt(n) {
+  return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+}
+function icon(rank) {
+  if (rank === 1)  return '🥇';
+  if (rank === 2)  return '🥈';
+  if (rank === 3)  return '🥉';
+  return '🎉';
+}
+
+/* ── Render ───────────────────────────────────────────────────────────────── */
+function render(customers) {
+  const ws = document.getElementById('winners-section');
+  const os = document.getElementById('others-section');
+  const dv = document.getElementById('divider');
+
+  if (!customers || customers.length === 0) {
+    ws.innerHTML = `<div class="state-box"><div class="icon">🎂</div><p>No entries yet — the race is on!</p></div>`;
+    os.innerHTML = ''; dv.style.display = 'none';
+    return;
+  }
+
+  const winners = customers.filter(c => c.cashback);  // rank 1-10
+  const others  = customers.filter(c => !c.cashback); // rank 11+
+
+  /* Winner grid */
+  const cards = winners.map(c => `
+    <div class="winner-card">
+      <div class="wc-rank">${c.rank}</div>
+      <span class="wc-icon">${icon(c.rank)}</span>
+      <div class="wc-name">${esc(c.name)}</div>
+      ${c.phone ? `<div class="wc-phone">${esc(c.phone)}</div>` : ''}
+      <div class="wc-amount">${fmt(c.amountSpent)}</div>
+      <span class="wc-badge">🎁 100% Cashback</span>
+    </div>`).join('');
+
+  ws.innerHTML = `<div class="winners-grid">${cards}</div>`;
+
+  /* Others list */
+  if (others.length > 0) {
+    dv.style.display = '';
+    const rows = others.map(c => `
+      <div class="other-row">
+        <div class="other-rank">${c.rank}</div>
+        <div class="other-info">
+          <div class="other-name">${esc(c.name)}</div>
+          ${c.phone ? `<div class="other-phone">${esc(c.phone)}</div>` : ''}
+        </div>
+        <div class="other-amount">${fmt(c.amountSpent)}</div>
+      </div>`).join('');
+
+    os.innerHTML = `
+      <h3 class="others-head">Other Participants <span>(Keep Shopping!)</span></h3>
+      <div class="others-list">${rows}</div>`;
+  } else {
+    dv.style.display = 'none';
+    os.innerHTML = '';
+  }
+}
+
+/* ── Data fetch ───────────────────────────────────────────────────────────── */
+async function load(showSpinner) {
+  if (showSpinner) {
+    document.getElementById('winners-section').innerHTML =
+      '<div class="state-box"><div class="spinner"></div><p>Fetching live data…</p></div>';
+  }
+  try {
+    const res  = await fetch('/api/customers');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    render(data);
+    document.getElementById('meta-bar').innerHTML =
+      `Last updated: ${new Date().toLocaleString('en-IN', { hour12: true })}
+       <button onclick="refresh()" title="Refresh">↻ Refresh</button>`;
+  } catch (e) {
+    document.getElementById('winners-section').innerHTML =
+      `<div class="state-box"><div class="icon">⚠️</div><p>Could not load data. Is the server running?</p></div>`;
+    document.getElementById('meta-bar').innerHTML =
+      `Failed to fetch &nbsp;<button onclick="refresh()">↻ Retry</button>`;
+  }
+}
+
+async function refresh() {
+  await load(true);
+}
+
+load(true);
+setInterval(() => load(false), 30000);
+</script>
+</body>
+</html>

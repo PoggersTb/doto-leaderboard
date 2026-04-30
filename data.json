@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1777446754821",
+    "name": "Tanishq Bansal",
+    "amountSpent": 4500.0,
+    "createdAt": "2026-04-29T12:42:34.821156Z"
+  },
+  {
+    "id": "1777446766619",
+    "name": "Varun Dhawan",
+    "amountSpent": 100000.0,
+    "createdAt": "2026-04-29T12:42:46.619786Z"
+  },
+  {
+    "id": "1777446773243",
+    "name": "Shruti Goel",
+    "amountSpent": 8999.0,
+    "createdAt": "2026-04-29T12:42:53.243667Z"
+  },
+  {
+    "id": "1777446776988",
+    "name": "Mahak Gupta",
+    "amountSpent": 123232.0,
+    "createdAt": "2026-04-29T12:42:56.988134Z"
+  },
+  {
+    "id": "1777446785756",
+    "name": "Rewa Mehta",
+    "amountSpent": 42000.0,
+    "createdAt": "2026-04-29T12:43:05.756756Z"
+  },
+  {
+    "id": "1777446792586",
+    "name": "Sarthak Jain",
+    "amountSpent": 1213253325.0,
+    "createdAt": "2026-04-29T12:43:12.586623Z"
+  }
+]

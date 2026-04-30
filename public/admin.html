@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Doto Kids Leaderboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple-deep:  #1E0E6A;
+      --purple-mid:   #2D1A9C;
+      --gold:         #F5C30A;
+      --pink:         #E8197E;
+      --white:        #FFFFFF;
+      --bg:           #F4F0FF;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(45,26,156,0.12);
+      text-align: center;
+    }
+
+    .logo img { height: 52px; margin-bottom: 20px; }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: var(--purple-deep);
+      margin-bottom: 8px;
+    }
+    h1 span { color: var(--pink); }
+
+    .subtitle {
+      color: #888;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .step-num {
+      min-width: 30px; height: 30px;
+      background: var(--purple-mid);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .step-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--purple-deep);
+      line-height: 1.5;
+    }
+    .step-text code {
+      background: #EDE9FE;
+      color: var(--purple-mid);
+      padding: 1px 6px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 0.85em;
+    }
+
+    .btn-sheet {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      background: linear-gradient(135deg, #34A853, #2E8A45);
+      color: var(--white);
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      padding: 14px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(52,168,83,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-sheet:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(52,168,83,0.5);
+    }
+
+    .btn-leaderboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      background: var(--purple-mid);
+      color: var(--white);
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(45,26,156,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-leaderboard:hover { transform: translateY(-2px); }
+
+    .refresh-box {
+      margin-top: 24px;
+      background: #FFF9E0;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 16px 20px;
+    }
+    .refresh-box p {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #7A5200;
+      margin-bottom: 10px;
+    }
+    #refresh-btn {
+      background: var(--gold);
+      color: var(--purple-deep);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.9rem;
+      padding: 9px 20px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    #refresh-btn:hover { transform: scale(1.04); }
+    #refresh-status {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #555;
+    }
+
+    .columns-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.83rem;
+    }
+    .columns-table th {
+      background: var(--purple-mid);
+      color: var(--white);
+      padding: 8px 12px;
+      font-family: 'Fredoka One', cursive;
+      font-weight: 400;
+      text-align: left;
+    }
+    .columns-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #EEE;
+      color: #555;
+      font-weight: 700;
+      vertical-align: top;
+    }
+    .columns-table tr:last-child td { border-bottom: none; }
+
+    .divider { margin: 28px 0; border: none; border-top: 2px dashed #EEE; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <img
+      src="https://www.dotokids.com/cdn/shop/files/Doto_Kids_Logo_Color_165x.png?v=1759925160"
+      alt="Doto Kids"
+      onerror="this.style.display='none'"
+    />
+  </div>
+
+  <h1>Leaderboard <span>Admin</span></h1>
+  <p class="subtitle">Manage the 2nd Birthday Sale leaderboard via Google Sheets</p>
+
+  <!-- Steps -->
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      Open the Google Sheet below and edit customer data directly. The leaderboard will auto-update within 30 seconds.
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      Keep the column headers exactly as:<br/>
+      <code>Customer Name</code> &nbsp; <code>Phone Number</code> &nbsp; <code>Amount Spent</code>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      Rankings are calculated automatically — sorted by <strong>Amount Spent</strong> (highest first). <strong>Top 10</strong> win 100% cashback.
+    </div>
+  </div>
+
+  <!-- Column guide -->
+  <table class="columns-table">
+    <tr>
+      <th>Column</th>
+      <th>Example</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><code>Customer Name</code></td>
+      <td>Priya Sharma</td>
+      <td>Displayed on leaderboard</td>
+    </tr>
+    <tr>
+      <td><code>Phone Number</code></td>
+      <td>XXXXXX2879</td>
+      <td>Shown masked for privacy</td>
+    </tr>
+    <tr>
+      <td><code>Amount Spent</code></td>
+      <td>4500</td>
+      <td>Numbers only, no ₹ symbol</td>
+    </tr>
+  </table>
+
+  <hr class="divider" />
+
+  <!-- CTA buttons -->
+  <a class="btn-sheet"
+     href="https://docs.google.com/spreadsheets/d/1PKciOkWTBX9fZQUSKNJZXi5UkKbLRLn-k1P04vKs0Ho/edit"
+     target="_blank">
+    📊 Open Google Sheet
+  </a>
+  <br/>
+  <a class="btn-leaderboard" href="/" target="_blank">
+    🏆 View Leaderboard
+  </a>
+
+  <!-- Manual cache-bust -->
+  <div class="refresh-box">
+    <p>Just updated the sheet? Force-refresh the leaderboard cache instantly:</p>
+    <button id="refresh-btn" onclick="forceRefresh()">↻ Refresh Now</button>
+    <span id="refresh-status"></span>
+  </div>
+</div>
+
+<script>
+async function forceRefresh() {
+  const btn = document.getElementById('refresh-btn');
+  const status = document.getElementById('refresh-status');
+  btn.disabled = true;
+  status.textContent = 'Refreshing…';
+  try {
+    const res  = await fetch('/api/refresh', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      status.textContent = `✅ Done! ${data.count} entries loaded.`;
+    } else {
+      status.textContent = '❌ ' + (data.error || 'Failed');
+    }
+  } catch {
+    status.textContent = '❌ Server not reachable';
+  } finally {
+    btn.disabled = false;
+    setTimeout(() => { status.textContent = ''; }, 5000);
+  }
+}
+</script>
+</body>
+</html>
